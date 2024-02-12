@@ -1,2 +1,29 @@
-
+<div class="container">
+  <mat-form-field class="form-field">
+    <mat-label>Enter City Name</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="cityName"
+      (keypress)="searchByCity(cityName)"
+    />
+  </mat-form-field>
+  <mat-card class="card">
+    @if (weather) {
+    <mat-card-title>
+      {{ weather.name }}
+    </mat-card-title>
+    <mat-card-content>
+      <p>Temperature: {{ weather.main.temp }}</p>
+      <p>Pressure: {{ weather.main.pressure }}</p>
+      <p>Humidity: {{ weather.main.humidity }}</p>
+      <img src="https://openweathermap.org/img/wn/{{weather.weather[0].icon}}@2x.png" width="100">
+    </mat-card-content>
+    } @else {
+    <mat-card-content>
+      City Name is wrong!
+    </mat-card-content>
+    }
+  </mat-card>
+</div>
 <router-outlet />
